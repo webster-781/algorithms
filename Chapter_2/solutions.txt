@@ -1,0 +1,38 @@
+2.3-3
+	Base Case: T(2) = 2. T(2) = 2*log2 = 2
+
+	Induction Hypothesis : Suppose, for all n = 2^i (i>=1), T(n) = {2 		if (i=1)}
+								       {2*T(n/2)+ n 	else    }
+				then O(n*log(n)) 
+	
+	Induction Step	     	: T(2*n) = 2*T(n) + 2*n = 2*n*log(n) + 2*n = 2*n*(log(n) +1)= (2*n)*(log(2*n))
+				  which is what we require.
+
+2.3-4 
+	In Insertion Sort of A[0...n-1], each step has 2 parts - 
+	Sorting of A[0...n-2] 									- T(n-1)
+	Finding the correct place for A[n-1] and inserting it in the previously sorted array	- c(n-1) + c = cn
+	
+	So, the recurrence equation for insertion sort comes out to be
+	T(n) = T(n-1) + cn
+	Now simply looking at the tree
+								T(n)
+						T(n-1)							cn
+				T(n-2)				c(n-1)
+			T(n-3)		c(n-2)
+		      .
+		     .
+		    .
+  		T(1)     c*2
+		 c
+	
+	Thus, T(n) = c*{(1->n-1)Sigma(i)} = c*(n)*(n-1)/2 
+	Therefore, the order of growth is O(n^2)
+
+2.3-6
+	No, even if we find the position at which A[j] should be placed using binary search in O(lg(j)) we still have 
+	to shift each of the j elements (in the worst-case scenario) and thus we have total order in one iteration is 
+	O(j) + O(lg(j)) = O(j)
+	the total running time will increase.
+
+2.3-7
